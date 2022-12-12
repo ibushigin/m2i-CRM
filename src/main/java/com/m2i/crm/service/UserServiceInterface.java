@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface UserServiceInterface {
     List<User> getAll();
-    User getId(int id);
+    User getId(int id) throws Exception;
     User createUser(User u);
     void deleteUser(int id);
-    User updateUser(User u);
+    User updateUser(User u) throws Exception;
 }

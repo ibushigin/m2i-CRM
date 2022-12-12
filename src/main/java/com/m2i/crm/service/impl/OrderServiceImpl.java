@@ -18,8 +18,8 @@ public class OrderServiceImpl implements OrderServiceInterface {
     }
 
     @Override
-    public Order getId(int id) {
-        return repo.getReferenceById(id);
+    public Order getId(int id) throws Exception{
+        return repo.findById(id).orElseThrow(Exception::new);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class OrderServiceImpl implements OrderServiceInterface {
     public void deleteOrder(int id) { repo.deleteById(id);}
 
     @Override
-    public Order updateOrder(Order o) {
-        Order order = repo.getReferenceById(o.getOrder_id());
+    public Order updateOrder(Order o) throws Exception{
+        Order order = repo.findById(o.getOrder_id()).orElseThrow(Exception::new);
         order.setOrder_id(o.getOrder_id());
         order.setAdrEt(o.getAdrEt());
         order.setNumberOfDays(o.getNumberOfDays());
@@ -41,7 +41,6 @@ public class OrderServiceImpl implements OrderServiceInterface {
         order.setType(o.getType());
         order.setNotes(o.getNotes());
         order.setCustomer(o.getCustomer());
-        repo.save(order);
-        return order;
+        return repo.save(order);
     }
 }

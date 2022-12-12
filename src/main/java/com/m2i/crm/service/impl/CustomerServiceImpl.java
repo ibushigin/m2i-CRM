@@ -18,8 +18,8 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
     }
 
     @Override
-    public Customer getId(int id) {
-        return repo.getReferenceById(id);
+    public Customer getId(int id) throws Exception{
+        return repo.findById(id).orElseThrow(Exception::new);
     }
 
     @Override
@@ -33,8 +33,8 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
     }
 
     @Override
-    public Customer updateCustomer(Customer c) {
-        Customer customer = repo.getReferenceById(c.getCustomer_id());
+    public Customer updateCustomer(Customer c) throws Exception{
+        Customer customer = repo.findById(c.getCustomer_id()).orElseThrow(Exception::new);
         customer.setCustomer_id(c.getCustomer_id());
         customer.setLastName(c.getLastName());
         customer.setFirstName(c.getFirstName());
@@ -45,7 +45,6 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
         customer.setNotes(c.getNotes());
         customer.setActive(c.getActive());
         customer.setOrders(c.getOrders());
-        repo.save(customer);
-        return customer;
+        return repo.save(customer);
     }
 }

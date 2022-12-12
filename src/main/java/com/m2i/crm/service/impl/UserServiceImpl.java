@@ -18,8 +18,8 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
-    public User getId(int id) {
-        return repo.getReferenceById(id);
+    public User getId(int id) throws Exception{
+        return repo.findById(id).orElseThrow(Exception::new);
     }
 
     @Override
@@ -33,13 +33,12 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
-    public User updateUser(User u) {
-        User user = repo.getReferenceById(u.getUser_id());
-        repo.save(u);
+    public User updateUser(User u) throws Exception{
+        User user = repo.findById(u.getUser_id()).orElseThrow(Exception::new);
         user.setUser_id(u.getUser_id());
         user.setMail(u.getMail());
         user.setGrants(u.getGrants());
         user.setPassword(u.getPassword());
-        return user;
+        return repo.save(u);
     }
 }

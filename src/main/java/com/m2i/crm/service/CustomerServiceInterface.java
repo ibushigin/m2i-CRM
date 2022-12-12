@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface CustomerServiceInterface {
     List<Customer> getAll();
-    Customer getId(int id);
+    Customer getId(int id) throws Exception;
     Customer createCustomer(Customer c);
     void deleteCustomer(int id);
-    Customer updateCustomer(Customer c);
+    Customer updateCustomer(Customer c) throws Exception;
 }
