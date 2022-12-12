@@ -10,5 +10,5 @@ public interface OrderServiceInterface {
     Order getId(int id);
     Order createOrder(Order o);
     void deleteOrder(int id);
-    void updateOrder(Order o);
+    Order updateOrder(Order o);
 }

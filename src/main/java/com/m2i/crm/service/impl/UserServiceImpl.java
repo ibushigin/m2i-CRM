@@ -33,7 +33,13 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
-    public void updateUser(User u) {
+    public User updateUser(User u) {
+        User user = repo.getReferenceById(u.getUser_id());
         repo.save(u);
+        user.setUser_id(u.getUser_id());
+        user.setMail(u.getMail());
+        user.setGrants(u.getGrants());
+        user.setPassword(u.getPassword());
+        return user;
     }
 }

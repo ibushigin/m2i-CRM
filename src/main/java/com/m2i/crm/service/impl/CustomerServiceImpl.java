@@ -33,7 +33,19 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
     }
 
     @Override
-    public void updateCustomer(Customer c) {
-        repo.save(c);
+    public Customer updateCustomer(Customer c) {
+        Customer customer = repo.getReferenceById(c.getCustomer_id());
+        customer.setCustomer_id(c.getCustomer_id());
+        customer.setLastName(c.getLastName());
+        customer.setFirstName(c.getFirstName());
+        customer.setCompany(c.getCompany());
+        customer.setEmail(c.getEmail());
+        customer.setPhone(c.getPhone());
+        customer.setMobile(c.getMobile());
+        customer.setNotes(c.getNotes());
+        customer.setActive(c.getActive());
+        customer.setOrders(c.getOrders());
+        repo.save(customer);
+        return customer;
     }
 }

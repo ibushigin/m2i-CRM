@@ -31,5 +31,17 @@ public class OrderServiceImpl implements OrderServiceInterface {
     public void deleteOrder(int id) { repo.deleteById(id);}
 
     @Override
-    public void updateOrder(Order o) { repo.save(o); }
+    public Order updateOrder(Order o) {
+        Order order = repo.getReferenceById(o.getOrder_id());
+        order.setOrder_id(o.getOrder_id());
+        order.setAdrEt(o.getAdrEt());
+        order.setNumberOfDays(o.getNumberOfDays());
+        order.setTva(o.getTva());
+        order.setStatus(o.getStatus());
+        order.setType(o.getType());
+        order.setNotes(o.getNotes());
+        order.setCustomer(o.getCustomer());
+        repo.save(order);
+        return order;
+    }
 }
