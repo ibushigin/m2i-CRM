@@ -3,9 +3,8 @@ package com.m2i.crm.model;
 import lombok.Data;
 
 import javax.persistence.*;
-
-@Data
 @Entity
+@Data
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -19,5 +18,5 @@ public class Order {
     String notes;
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    Customer customer_id;
+    Customer customer;
 }

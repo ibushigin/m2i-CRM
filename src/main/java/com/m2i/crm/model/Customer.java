@@ -12,7 +12,6 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "customer_id", nullable = false)
     Integer customer_id;
-
     String lastName;
     String firstName;
     String company;
@@ -21,5 +20,6 @@ public class Customer {
     String mobile;
     String notes;
     Boolean active;
+    @OneToMany(mappedBy="order_id")
     Set<Order> orders;
 }
