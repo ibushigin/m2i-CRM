@@ -4,9 +4,10 @@ import com.m2i.crm.model.User;
 import com.m2i.crm.repository.UserRepository;
 import com.m2i.crm.service.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class UserServiceImpl implements UserServiceInterface {
 
     @Autowired

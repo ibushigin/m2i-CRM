@@ -4,9 +4,10 @@ import com.m2i.crm.model.Customer;
 import com.m2i.crm.repository.CustomerRepository;
 import com.m2i.crm.service.CustomerServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CustomerServiceImpl implements CustomerServiceInterface {
 
     @Autowired
