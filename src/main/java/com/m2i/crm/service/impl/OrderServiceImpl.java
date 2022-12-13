@@ -4,9 +4,10 @@ import com.m2i.crm.model.Order;
 import com.m2i.crm.repository.OrderRepository;
 import com.m2i.crm.service.OrderServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class OrderServiceImpl implements OrderServiceInterface {
 
     @Autowired
